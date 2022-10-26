@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useRef } from "react";
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -37,9 +37,10 @@ export default function App() {
       <View style={styles.tasksWrapper}>
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>
-            Tasks: <Text>{state.length}</Text>
+            Current Tasks: <Text>{state.length}</Text>
           </Text>
         </View>
+        {/* Task List */}
         <ScrollView style={styles.itemsContainer}>
           {state.map((item) => (
             <Task key={item.id} data={item} dispatch={dispatch} />
@@ -59,8 +60,8 @@ export default function App() {
           onChangeText={(text) => setTask(text)}
         />
 
-        <TouchableOpacity onPress={() => handleAddTask()}>
-          <View style={styles.addWrapper}>
+        <TouchableOpacity onPress={handleAddTask}>
+          <View style={styles.buttonWrapper}>
             <AntDesign name="plus" />
           </View>
         </TouchableOpacity>
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     elevation: 4,
   },
-  addWrapper: {
+  buttonWrapper: {
     width: 60,
     height: 60,
     backgroundColor: "#FFF",

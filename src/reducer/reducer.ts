@@ -3,7 +3,7 @@ import { ActionType, ITask } from "./reducer.interface";
 export const ACTIONS = {
   ADD_TODO: "add-todo",
   REMOVE_TODO: "remove-todo",
-  MARK_TODO: "mark_todo",
+  MARK_TODO: "mark-todo",
 };
 
 export const todoReducer = (state: ITask[], action: ActionType): ITask[] => {
