@@ -3,9 +3,7 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  TouchableHighlight,
   TouchableNativeFeedback,
-  StyleProp,
 } from "react-native";
 import { ACTIONS } from "../reducer/reducer";
 import { ITaskProps } from "./task.interface";
@@ -36,9 +34,11 @@ export default function Task(props: ITaskProps) {
             {data.title}
           </Text>
         </View>
-        <TouchableOpacity onPress={handleDeleteTask}>
-          <AntDesign size={20} name="delete" />
-        </TouchableOpacity>
+        <View style={styles.itemRight}>
+          <TouchableOpacity onPress={handleDeleteTask}>
+            <AntDesign size={20} name="delete" />
+          </TouchableOpacity>
+        </View>
       </View>
     </TouchableNativeFeedback>
   );
@@ -55,9 +55,15 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   itemLeft: {
+    flex: 4,
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",
+  },
+  itemRight: {
+    justifyContent: "space-between",
+    flex: 1,
+    flexDirection: "row",
   },
   square: {
     width: 24,
